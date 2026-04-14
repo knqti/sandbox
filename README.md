@@ -4,7 +4,7 @@ A bash script to reduce supply-chain attack risk.
 
 ## How It Works
 
-Runs your project directory inside a rootless Podman container with:
+Runs your project directory inside a rootless [Podman](https://podman.io/) container with:
 - No network access by default
 - Dropped Linux capabilities
 - No privilege escalation
