@@ -19,10 +19,28 @@ The container is ephemeral (`--rm`), nothing persists outside your project direc
 
 ## Usage
 
+Using a Python project as an example:
+
 ```bash
-# Navigate to your project and run
-cd ~/projects/myapp
+# Run with network first
+SANDBOX_NETWORK=slirp4netns ~/sandbox.sh
+
+# Create and navigate to your project
+uv init myapp
+cd ./myapp
+
+# Create virtual env and install dependencies
+uv venv
+source .venv/bin/activate
+uv add <dependencies>
+
+# Recreate container without network
+exit
 ~/sandbox.sh
+
+# Run your app
+source .venv/bin/activate
+uv run main.py
 ```
 
 Secrets are loaded automatically if `~/.secrets/<project-name>.env` exists.
